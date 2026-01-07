@@ -2,16 +2,18 @@
 // i’ll reuse this in hero + contact so everything stays consistent
 
 import { site } from "@/content/site";
+import type { ComponentType } from "react";
 
+// vercel was complaining about the JSX namespace, so i’m typing icons as react components instead
 type SocialItem = {
   label: string;
   href: string;
-  icon: (props: { className?: string }) => JSX.Element;
+  icon: ComponentType<{ className?: string }>;
 };
 
 function IconGithub({ className }: { className?: string }) {
   return (
-    // github icon (simple inline svg so i don’t need extra libraries)
+    // github icon (inline svg so i don’t need extra libs)
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <path
         fill="currentColor"
@@ -116,7 +118,8 @@ export function SocialLinks() {
             text-white/70
             transition-colors
             hover:bg-white/10 hover:text-white hover:border-white/20
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/40
+            active:bg-white/15
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35
           "
         >
           <item.icon className="h-5 w-5" />
