@@ -1,5 +1,5 @@
 // this is my experience section
-// i’m keeping it clean + skimmable, but still “real” and not fluffy
+// i'm keeping it clean + skimmable, but still "real" and not fluffy
 
 import { site } from "@/content/site";
 import { Section } from "./Section";
@@ -12,27 +12,27 @@ export function Experience() {
         {site.experience.map((item) => (
           <div
             key={`${item.title}-${item.org}`}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:bg-white/8 hover:border-white/20 hover:-translate-y-[2px]"
+            className="ui-card rounded-2xl border p-6 transition hover:-translate-y-[2px]"
           >
             {/* top row: title + time */}
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <div className="text-sm md:text-base font-semibold text-white/90">
+              <div className="ui-text-strong text-sm font-semibold md:text-base">
                 {item.title}
               </div>
 
               {/* time stays subtle */}
-              <div className="text-xs text-white/45">{item.time}</div>
+              <div className="ui-text-faint text-xs">{item.time}</div>
             </div>
 
             {/* org line */}
-            <div className="mt-1 text-sm text-white/60">{item.org}</div>
+            <div className="ui-text-muted mt-1 text-sm">{item.org}</div>
 
             {/* bullets */}
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="ui-text mt-4 space-y-2 text-sm">
               {item.bullets.map((b) => (
                 <li key={b} className="leading-relaxed">
                   {/* tiny bullet dot but still minimal */}
-                  <span className="mr-2 text-white/35">•</span>
+                  <span className="ui-text-faint mr-2">•</span>
                   {b}
                 </li>
               ))}

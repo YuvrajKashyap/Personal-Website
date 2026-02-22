@@ -14,7 +14,7 @@ type WorkItem = {
 
 function ArrowIcon() {
   return (
-    // tiny arrow so clickable cards feel more “app-like”
+    // tiny arrow so clickable cards feel more app-like
     <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
       <path
         fill="currentColor"
@@ -40,31 +40,31 @@ export function Work() {
                 aria-disabled={!clickable}
                 className={[
                   // base card
-                  "group block h-full rounded-2xl border border-white/10 bg-white/5",
+                  "group ui-card block h-full rounded-2xl border",
                   "p-6 transition",
                   // hover polish
-                  "hover:bg-white/8 hover:border-white/20 hover:-translate-y-[2px]",
+                  "hover:-translate-y-[2px]",
                   // focus polish (keyboard users)
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35",
-                  // if not clickable, don’t pretend it is
+                  // if not clickable, i don't pretend it is
                   !clickable ? "pointer-events-none opacity-[0.92]" : "",
                 ].join(" ")}
               >
                 {/* top row: title + status */}
                 <div className="flex items-start justify-between gap-3">
-                  <div className="text-base font-semibold tracking-tight text-white/90 leading-snug">
+                  <div className="ui-text-strong text-base font-semibold tracking-tight leading-snug">
                     {p.title}
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-white/45">
+                  <div className="ui-text-faint flex items-center gap-2 text-xs">
                     {/* status label like "private" / "public" / "shipping" */}
-                    <span className="rounded-full border border-white/10 bg-black/20 px-2.5 py-1">
+                    <span className="ui-chip-subtle rounded-full border px-2.5 py-1">
                       {p.note}
                     </span>
 
-                    {/* small arrow only if it’s actually clickable */}
+                    {/* small arrow only if it's actually clickable */}
                     {clickable ? (
-                      <span className="text-white/55 group-hover:text-white transition">
+                      <span className="ui-text-soft transition">
                         <ArrowIcon />
                       </span>
                     ) : null}
@@ -72,7 +72,7 @@ export function Work() {
                 </div>
 
                 {/* description */}
-                <p className="mt-3 text-sm text-white/65 leading-relaxed">
+                <p className="ui-text-muted mt-3 text-sm leading-relaxed">
                   {p.description}
                 </p>
 
@@ -82,9 +82,9 @@ export function Work() {
                     <span
                       key={t}
                       className="
-                        rounded-full border border-white/10 bg-white/5
-                        px-3 py-1 text-xs text-white/70
-                        group-hover:border-white/15 transition
+                        ui-chip-subtle ui-text
+                        rounded-full border px-3 py-1 text-xs
+                        transition
                       "
                     >
                       {t}
@@ -94,13 +94,9 @@ export function Work() {
 
                 {/* tiny bottom hint (only if clickable) */}
                 {clickable ? (
-                  <div className="mt-6 text-xs text-white/40">
-                    open project
-                  </div>
+                  <div className="ui-text-faint mt-6 text-xs">open project</div>
                 ) : (
-                  <div className="mt-6 text-xs text-white/40">
-                    private / in progress
-                  </div>
+                  <div className="ui-text-faint mt-6 text-xs">private / in progress</div>
                 )}
               </a>
             </div>
@@ -108,8 +104,8 @@ export function Work() {
         })}
       </div>
 
-      <div className="mt-6 text-xs text-white/40">
-        i’m keeping this tight on purpose. more projects get added as i ship.
+      <div className="ui-text-faint mt-6 text-xs">
+        i&apos;m keeping this tight on purpose. more projects get added as i ship.
       </div>
     </Section>
   );

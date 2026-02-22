@@ -16,12 +16,12 @@ export function Section({ id, title, children }: SectionProps) {
       <div className="mx-auto w-full max-w-5xl px-5">
         {/* section title */}
         <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-lg md:text-xl font-semibold tracking-tight text-white/90">
+          <h2 className="ui-text-strong text-lg md:text-xl font-semibold tracking-tight">
             {title}
           </h2>
 
           {/* tiny divider line just to make it feel more “designed” */}
-          <div className="hidden md:block h-px w-40 bg-white/10" />
+          <div className="ui-divider hidden md:block h-px w-40" />
         </div>
 
         {/* section content */}

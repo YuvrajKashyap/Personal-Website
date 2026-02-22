@@ -20,7 +20,7 @@ export default function Page() {
 
   return (
     // this wrapper holds the entire site
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen text-[rgb(var(--fg))]">
       {/* top nav (sticky + premium) */}
       <Nav />
 
@@ -35,18 +35,18 @@ export default function Page() {
             </div>
 
             {/* this is the “glass” surface */}
-            <div className="relative rounded-[32px] border border-white/10 bg-black/20 backdrop-blur p-8 md:p-12">
+            <div className="ui-hero-surface relative rounded-[32px] border backdrop-blur p-8 md:p-12">
               {/* content grid */}
               <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] items-center">
                 {/* left side: text */}
                 <div>
                   {/* internship status pill (i want this super visible) */}
-                  <div className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs text-cyan-100">
+                  <div className="ui-accent-pill inline-flex rounded-full border px-4 py-2 text-xs">
                     {site.statusPill}
                   </div>
 
                   {/* greeting */}
-                  <div className="mt-6 text-sm text-white/60">hey, i&apos;m</div>
+                  <div className="ui-text-muted mt-6 text-sm">hey, i&apos;m</div>
 
                   {/* name (main hero headline) */}
                   <h1 className="mt-1 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
@@ -54,12 +54,12 @@ export default function Page() {
                   </h1>
 
                   {/* clean tagline */}
-                  <p className="mt-4 text-base md:text-lg text-white/70 leading-relaxed max-w-xl">
+                  <p className="ui-text mt-4 text-base md:text-lg leading-relaxed max-w-xl">
                     {site.hero.headline}
                   </p>
 
                   {/* supporting line */}
-                  <p className="mt-4 text-sm md:text-base text-white/55 max-w-2xl leading-relaxed">
+                  <p className="ui-text-soft mt-4 text-sm md:text-base max-w-2xl leading-relaxed">
                     {site.hero.subheadline}
                   </p>
 
@@ -67,14 +67,14 @@ export default function Page() {
                   <div className="mt-7 flex flex-wrap items-center gap-3">
                     <a
                       href={`#${site.hero.ctaPrimary.to}`}
-                      className="rounded-xl bg-cyan-400/15 border border-cyan-400/25 px-4 py-2 text-sm text-cyan-100 hover:bg-cyan-400/20 hover:border-cyan-300/40 transition-colors"
+                      className="ui-accent-button rounded-xl border px-4 py-2 text-sm transition-colors"
                     >
                       {site.hero.ctaPrimary.label}
                     </a>
 
                     <a
                       href={site.hero.ctaSecondary.href}
-                      className="rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-sm text-white hover:bg-white/15 hover:border-white/20 transition-colors"
+                      className="ui-subtle-button ui-text-strong rounded-xl border px-4 py-2 text-sm transition-colors"
                     >
                       {site.hero.ctaSecondary.label}
                     </a>
@@ -89,24 +89,24 @@ export default function Page() {
                 {/* right side: photo */}
                 <div className="flex md:justify-end">
                   <div className="w-full max-w-[320px]">
-                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden bg-black/30">
+                    <div className="ui-card rounded-3xl border p-4">
+                      <div className="ui-chip-subtle relative aspect-square rounded-2xl overflow-hidden">
                         {/* placeholder until i add my photo */}
                         <div className="absolute inset-0 grid place-items-center">
-                          <div className="h-28 w-28 rounded-2xl border border-white/10 bg-white/5 grid place-items-center">
-                            <div className="text-3xl font-semibold text-white/80">
+                          <div className="ui-chip h-28 w-28 rounded-2xl border grid place-items-center">
+                            <div className="ui-text-strong text-3xl font-semibold">
                               {initials}
                             </div>
                           </div>
 
-                          <div className="absolute bottom-4 text-xs text-white/40">
+                          <div className="ui-text-faint absolute bottom-4 text-xs">
                             add my photo later
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-3 text-xs text-white/45">
+                    <div className="ui-text-faint mt-3 text-xs">
                       cs @ ut dallas • applied ml + full-stack
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export default function Page() {
 
       {/* footer */}
       <footer className="py-10">
-        <div className="mx-auto w-full max-w-5xl px-5 text-xs text-white/35">
+        <div className="ui-text-faint mx-auto w-full max-w-5xl px-5 text-xs">
           © {new Date().getFullYear()} {site.name} • {site.domain}
         </div>
       </footer>

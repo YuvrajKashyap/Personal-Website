@@ -113,12 +113,11 @@ export function SocialLinks() {
           rel={item.href.startsWith("http") ? "noreferrer" : undefined}
           aria-label={item.label}
           className="
+            ui-subtle-button
             inline-flex h-10 w-10 items-center justify-center
-            rounded-xl border border-white/10 bg-white/5
-            text-white/70
+            rounded-xl border
             transition-colors
-            hover:bg-white/10 hover:text-white hover:border-white/20
-            active:bg-white/15
+            active:scale-[0.98]
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35
           "
         >
