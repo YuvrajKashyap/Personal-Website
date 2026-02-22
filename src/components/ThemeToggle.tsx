@@ -57,6 +57,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
+      aria-pressed={theme === "dark"}
       aria-label={`switch to ${nextTheme} theme`}
       title={`switch to ${nextTheme} theme`}
       onClick={() => {
@@ -64,12 +65,11 @@ export function ThemeToggle() {
         setTheme(nextTheme);
         applyTheme(nextTheme);
       }}
-      className="inline-flex h-9 items-center gap-2 rounded-full border ui-subtle-button px-3 text-sm active:scale-[0.98] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35"
+      className="ui-button ui-icon-button ui-button-subtle ui-interactive"
     >
       <span className="grid place-items-center">
         {theme === "dark" ? <SunIcon /> : <MoonIcon />}
       </span>
-      <span className="hidden sm:inline">{theme === "dark" ? "light" : "dark"}</span>
     </button>
   );
 }

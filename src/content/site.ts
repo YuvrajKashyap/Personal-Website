@@ -8,22 +8,31 @@ export const site = {
 
   // this is the small identity strip line under the hero
   roleLine:
-    "cs @ ut dallas • applied ml + full-stack • navigation/planning research • aspiring founder",
+    "cs @ ut dallas - applied ml + full-stack - navigation/planning research - aspiring founder",
 
   // this is the pill i want recruiters to notice instantly
-  statusPill: "actively looking for swe internships — summer 2026",
+  statusPill: "actively looking for swe internships - summer 2026",
 
   // top nav items (super easy to reorder later)
   nav: [
     { id: "home", label: "Home" },
     { id: "work", label: "Work" },
-    { id: "now", label: "Now" },
     { id: "experience", label: "Experience" },
+    { id: "now", label: "Now" },
     { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ],
 
-  // my links live here (i’ll fill these later)
+  // tiny ui labels i reuse across the site so i don't hardcode them in components
+  ui: {
+    trackerLabel: "tracker",
+    emailLabel: "email",
+    resumeLabel: "resume",
+    emailCtaLabel: "Email Me",
+    trackerBackLabel: "Back to Home",
+  },
+
+  // my links live here (i'll fill these later)
   links: {
     email: "you@example.com", // replace later
     github: "https://github.com/your-username",
@@ -32,13 +41,14 @@ export const site = {
     x: "https://x.com/your-handle",
     instagram: "https://instagram.com/your-handle",
     resume: "/resume.pdf", // drop resume.pdf into /public when ready
+    tracker: "/tracker",
   },
 
   // hero content
   hero: {
     headline: "building clean, fast software with an ai-first mindset.",
     subheadline:
-      "cs @ ut dallas • applied ml + full-stack • uav navigation/planning research • aspiring founder",
+      "cs @ ut dallas - applied ml + full-stack - uav navigation/planning research - aspiring founder",
     ctaPrimary: { label: "View Work", to: "work" },
     ctaSecondary: { label: "Download Resume", href: "/resume.pdf" },
   },
@@ -51,13 +61,13 @@ export const site = {
         "3d path planning + geometric modeling for urban environments. focused on real constraints, speed/optimality tradeoffs, and turning theory into an implementable pipeline.",
       tags: ["Research", "Planning", "Geometry", "ML/AI"],
       href: null,
-      note: "in progress • private",
+      note: "in progress - private",
     },
     {
       title: "portfolio website (this site)",
       description:
-        "apple-grade one-page portfolio built with next.js + motion. designed to iterate fast as i ship more projects.",
-      tags: ["Next.js", "TypeScript", "Tailwind", "Motion"],
+        "premium one-page portfolio built with next.js. designed to stay fast to iterate while i keep shipping better work.",
+      tags: ["Next.js", "TypeScript", "Tailwind", "UI Systems"],
       href: null,
       note: "v1 shipping now",
     },
@@ -75,7 +85,7 @@ export const site = {
   now: {
     building: [
       "uav navigation/planning research (daescu)",
-      "personal portfolio website (v1 → iterating weekly)",
+      "personal portfolio website (v1 -> iterating weekly)",
       "growing an audience on youtube (yk blueprint)",
     ],
     learning: [
@@ -83,7 +93,7 @@ export const site = {
       "typescript",
       "react patterns (component architecture)",
       "tailwind (systematic ui)",
-      "ml systems (data → train → evaluate)",
+      "ml systems (data -> train -> evaluate)",
       "pytorch",
       "llm integration",
       "sales fundamentals",
@@ -95,19 +105,19 @@ export const site = {
   // experience section
   experience: [
     {
-      title: "research assistant — uav navigation/planning",
+      title: "research assistant - uav navigation/planning",
       org: "ut dallas (daescu lab)",
       time: "current",
       bullets: [
         "working on modeling + planning problems with geometric assumptions + real constraints.",
-        "bridging theory → implementable pipeline (data, sim, optimization, evaluation).",
+        "bridging theory -> implementable pipeline (data, sim, optimization, evaluation).",
       ],
     },
     {
       title: "nova autonomous driving research program",
       org: "program / lab",
       time: "past",
-      bullets: ["research-oriented engineering work in autonomy (i’ll expand later)."],
+      bullets: ["research-oriented engineering work in autonomy (i'll expand later)."],
     },
     {
       title: "peer advisor (pa)",
@@ -124,10 +134,10 @@ export const site = {
   about: {
     title: "About",
     body: [
-      "i’m a cs student at ut dallas focused on full-stack engineering and applied ml.",
+      "i'm a cs student at ut dallas focused on full-stack engineering and applied ml.",
       "i care about clean systems, real proof, and shipping fast without losing quality.",
     ],
     outsideTech:
-      "outside of tech, i’m obsessed with astrophysics — especially cosmology and big-picture questions about the universe.",
+      "outside of tech, i'm obsessed with astrophysics - especially cosmology and big-picture questions about the universe.",
   },
 };

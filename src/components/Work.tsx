@@ -1,5 +1,5 @@
 // this is my "selected work" section
-// goal: clean, premium cards that feel intentional (not generic tailwind boxes)
+// goal: clean, premium cards that feel intentional (not generic blocks)
 
 import { site } from "@/content/site";
 import { Section } from "./Section";
@@ -28,83 +28,56 @@ export function Work() {
   return (
     <Section id="work" title="Work">
       <div className="grid gap-4 md:grid-cols-3">
-        {site.work.map((p: WorkItem) => {
-          const clickable = Boolean(p.href);
+        {site.work.map((project: WorkItem) => {
+          const clickable = Boolean(project.href);
 
           return (
-            <div key={p.title} className="h-full">
+            <div key={project.title} className="h-full">
               <a
-                href={p.href ?? "#"}
+                href={project.href ?? "#"}
                 target={clickable ? "_blank" : undefined}
                 rel={clickable ? "noreferrer" : undefined}
                 aria-disabled={!clickable}
                 className={[
-                  // base card
-                  "group ui-card block h-full rounded-2xl border",
-                  "p-6 transition",
-                  // hover polish
-                  "hover:-translate-y-[2px]",
-                  // focus polish (keyboard users)
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35",
-                  // if not clickable, i don't pretend it is
-                  !clickable ? "pointer-events-none opacity-[0.92]" : "",
+                  "ui-surface ui-radius-lg block h-full border p-5 md:p-6",
+                  clickable ? "ui-interactive" : "cursor-default opacity-[0.96]",
+                  !clickable ? "pointer-events-none" : "",
                 ].join(" ")}
               >
-                {/* top row: title + status */}
                 <div className="flex items-start justify-between gap-3">
-                  <div className="ui-text-strong text-base font-semibold tracking-tight leading-snug">
-                    {p.title}
-                  </div>
+                  <div className="type-card-title ui-text-strong">{project.title}</div>
 
-                  <div className="ui-text-faint flex items-center gap-2 text-xs">
-                    {/* status label like "private" / "public" / "shipping" */}
-                    <span className="ui-chip-subtle rounded-full border px-2.5 py-1">
-                      {p.note}
-                    </span>
+                  <div className="type-meta ui-text-faint flex items-center gap-2">
+                    <span className="ui-chip-subtle px-2.5 py-1">{project.note}</span>
 
-                    {/* small arrow only if it's actually clickable */}
                     {clickable ? (
-                      <span className="ui-text-soft transition">
+                      <span className="ui-text-soft">
                         <ArrowIcon />
                       </span>
                     ) : null}
                   </div>
                 </div>
 
-                {/* description */}
-                <p className="ui-text-muted mt-3 text-sm leading-relaxed">
-                  {p.description}
-                </p>
+                <p className="type-body-sm ui-text-muted mt-3">{project.description}</p>
 
-                {/* tags */}
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="
-                        ui-chip-subtle ui-text
-                        rounded-full border px-3 py-1 text-xs
-                        transition
-                      "
-                    >
-                      {t}
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="ui-chip-subtle type-meta ui-text px-3 py-1">
+                      {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* tiny bottom hint (only if clickable) */}
-                {clickable ? (
-                  <div className="ui-text-faint mt-6 text-xs">open project</div>
-                ) : (
-                  <div className="ui-text-faint mt-6 text-xs">private / in progress</div>
-                )}
+                <div className="type-meta ui-text-faint mt-6">
+                  {clickable ? "open project" : "private / in progress"}
+                </div>
               </a>
             </div>
           );
         })}
       </div>
 
-      <div className="ui-text-faint mt-6 text-xs">
+      <div className="type-meta ui-text-faint mt-5">
         i&apos;m keeping this tight on purpose. more projects get added as i ship.
       </div>
     </Section>

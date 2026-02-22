@@ -1,5 +1,5 @@
-// this is my reusable section wrapper so every section looks consistent and premium
-// it keeps the width, spacing, and title style the same across the whole page
+// this is my reusable section wrapper so every section stays on the same rhythm
+// it keeps width, spacing, and title treatment consistent across the page
 
 import type { ReactNode } from "react";
 
@@ -12,16 +12,14 @@ type SectionProps = {
 export function Section({ id, title, children }: SectionProps) {
   return (
     // each section has an id for smooth scrolling
-    <section id={id} className="py-20">
-      <div className="mx-auto w-full max-w-5xl px-5">
+    <section id={id} className="ui-section">
+      <div className="ui-container">
         {/* section title */}
-        <div className="mb-6 flex items-end justify-between">
-          <h2 className="ui-text-strong text-lg md:text-xl font-semibold tracking-tight">
-            {title}
-          </h2>
+        <div className="mb-7 flex items-end justify-between gap-4 md:mb-8">
+          <h2 className="type-section-title ui-text-strong">{title}</h2>
 
-          {/* tiny divider line just to make it feel more “designed” */}
-          <div className="ui-divider hidden md:block h-px w-40" />
+          {/* tiny divider line so sections feel intentionally spaced */}
+          <div className="ui-divider hidden h-px w-40 md:block" />
         </div>
 
         {/* section content */}

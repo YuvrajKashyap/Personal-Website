@@ -1,5 +1,5 @@
 // this is my experience section
-// i'm keeping it clean + skimmable, but still "real" and not fluffy
+// i'm keeping it clean + skimmable, but still real and useful
 
 import { site } from "@/content/site";
 import { Section } from "./Section";
@@ -8,32 +8,23 @@ export function Experience() {
   return (
     <Section id="experience" title="Experience">
       <div className="grid gap-4">
-        {/* loop through my experience items from site.ts */}
         {site.experience.map((item) => (
           <div
             key={`${item.title}-${item.org}`}
-            className="ui-card rounded-2xl border p-6 transition hover:-translate-y-[2px]"
+            className="ui-surface ui-radius-lg ui-interactive border p-5 md:p-6"
           >
-            {/* top row: title + time */}
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <div className="ui-text-strong text-sm font-semibold md:text-base">
-                {item.title}
-              </div>
-
-              {/* time stays subtle */}
-              <div className="ui-text-faint text-xs">{item.time}</div>
+              <div className="type-card-title ui-text-strong">{item.title}</div>
+              <div className="type-meta ui-text-faint">{item.time}</div>
             </div>
 
-            {/* org line */}
-            <div className="ui-text-muted mt-1 text-sm">{item.org}</div>
+            <div className="type-body-sm ui-text-muted mt-1">{item.org}</div>
 
-            {/* bullets */}
-            <ul className="ui-text mt-4 space-y-2 text-sm">
-              {item.bullets.map((b) => (
-                <li key={b} className="leading-relaxed">
-                  {/* tiny bullet dot but still minimal */}
-                  <span className="ui-text-faint mr-2">•</span>
-                  {b}
+            <ul className="mt-4 space-y-2">
+              {item.bullets.map((bullet) => (
+                <li key={bullet} className="type-body-sm ui-text flex gap-2">
+                  <span className="ui-text-faint mt-[0.1rem] shrink-0">-</span>
+                  <span>{bullet}</span>
                 </li>
               ))}
             </ul>

@@ -1,59 +1,75 @@
 // this is my top nav
-// goal: centered glass pill (not full width), clean spacing, premium hover states
+// goal: centered pill with clean spacing + recruiter-priority actions
 
 "use client";
 
+import Link from "next/link";
 import { site } from "@/content/site";
-import { ThemeToggle } from "./ThemeToggle";
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 2 8 5 8-5H4zm16 10V10l-8 5-8-5v8h16z"
+      />
+    </svg>
+  );
+}
 
 export function Nav() {
   return (
     // floating pill nav (not a full-width bar)
-    <header className="fixed top-4 left-0 right-0 z-50">
-      {/* this keeps it centered and not 100% width */}
-      <div className="mx-auto w-[92%] md:w-[80%] max-w-5xl">
+    <header className="fixed inset-x-0 top-4 z-50">
+      {/* this keeps it centered and not full width */}
+      <div className="ui-container">
         {/* the actual pill */}
-        <div className="ui-nav-surface rounded-full border backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
-          <div className="px-5 py-2.5 flex items-center justify-between gap-4">
+        <div className="ui-surface ui-surface-frost ui-pill ui-shadow-md">
+          <div className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
             {/* left: my name */}
             <a
               href="#home"
-              className="text-sm font-semibold tracking-tight ui-text-strong transition-colors"
+              className="ui-text-strong type-nav ui-interactive ui-pill px-2 py-2"
             >
               {site.name}
             </a>
 
             {/* middle: nav items (desktop only) */}
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden items-center gap-1 md:flex">
               {site.nav.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="ui-nav-link rounded-full px-3 py-2 text-sm transition-colors"
+                  className="ui-nav-link type-nav ui-interactive"
                 >
                   {item.label}
                 </a>
               ))}
+
+              <Link
+                href={site.links.tracker}
+                className="ui-nav-link type-nav ui-interactive"
+              >
+                {site.ui.trackerLabel}
+              </Link>
             </nav>
 
-            {/* right: actions */}
+            {/* right: recruiter-priority actions */}
             <div className="flex items-center gap-2">
-              {/* mobile shortcut */}
               <a
-                href="#contact"
-                className="md:hidden rounded-full border ui-subtle-button px-3 py-2 text-sm transition-colors"
+                href={`mailto:${site.links.email}`}
+                aria-label={site.ui.emailLabel}
+                title={site.ui.emailLabel}
+                className="ui-button ui-icon-button ui-button-subtle ui-interactive"
               >
-                contact
+                <MailIcon />
               </a>
 
-              <ThemeToggle />
-
-              {/* resume button */}
               <a
                 href={site.links.resume}
-                className="ui-accent-button inline-flex rounded-full border px-3 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35"
+                className="ui-button ui-button-accent ui-interactive ui-pill"
               >
-                resume
+                {site.ui.resumeLabel}
               </a>
             </div>
           </div>

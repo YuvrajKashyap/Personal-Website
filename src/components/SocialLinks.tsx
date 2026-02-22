@@ -113,12 +113,7 @@ export function SocialLinks() {
           rel={item.href.startsWith("http") ? "noreferrer" : undefined}
           aria-label={item.label}
           className="
-            ui-subtle-button
-            inline-flex h-10 w-10 items-center justify-center
-            rounded-xl border
-            transition-colors
-            active:scale-[0.98]
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/35
+            ui-button ui-icon-button ui-button-subtle ui-interactive
           "
         >
           <item.icon className="h-5 w-5" />
