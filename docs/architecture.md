@@ -84,7 +84,9 @@ Step 6 implementation details:
 - Cookie-backed theme resolution lives in `src/lib/theme/server.ts`.
 - Shared theme constants, default mode, and validation live in `src/lib/theme/theme.ts`.
 - Dark mode is the default when the cookie is missing or invalid.
-- The root layout reads the server theme and sets `html[data-theme]` before paint.
+- The root layout ships `html[data-theme="dark"]` statically and an inline pre-paint script (`src/components/theme/ThemeScript.tsx`) sets the attribute from the `yk-theme` cookie before any style applies. This keeps the first frame cookie-backed while letting every public route prerender.
+- Client theme state lives in `src/lib/theme/theme-store.ts` and is read through `useSyncExternalStore`; the server snapshot is the default theme, and the real value applies right after hydration.
+- Home is the only route that reads the cookie on the server (`src/app/(site)/page.tsx`), because its server-rendered hero branches on the theme. `HomePage` receives both heroes and the shared sections as server-rendered nodes and mounts only the active hero.
 - `ThemeProvider` lives in `src/components/theme/ThemeProvider.tsx`.
 - `ThemeToggle` lives in `src/components/theme/ThemeToggle.tsx`.
 - Cookie-backed persistence is the source of truth for refresh behavior.

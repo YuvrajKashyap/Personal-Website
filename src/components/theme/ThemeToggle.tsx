@@ -41,7 +41,6 @@ export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const nextThemeLabel = isDark ? "light" : "dark";
-  const currentThemeLabel = isDark ? "Dark" : "Light";
 
   return (
     <div className="theme-toggle" data-theme-state={theme}>
@@ -66,8 +65,15 @@ export function ThemeToggle() {
           <SunIcon />
         </span>
       </button>
+      {/* Both labels ship in the HTML; CSS shows the one matching
+          html[data-theme], so the right label paints before hydration. */}
       <span className="theme-toggle__label" aria-hidden="true">
-        {currentThemeLabel}
+        <span className="theme-toggle__label-text" data-theme-label="dark">
+          Dark
+        </span>
+        <span className="theme-toggle__label-text" data-theme-label="light">
+          Light
+        </span>
       </span>
     </div>
   );

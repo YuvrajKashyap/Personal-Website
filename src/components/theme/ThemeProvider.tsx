@@ -6,16 +6,21 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
 import {
   THEME_COOKIE_MAX_AGE,
   THEME_COOKIE_NAME,
-  resolveTheme,
   type ThemeMode,
 } from "@/lib/theme/theme";
+import {
+  getThemeServerSnapshot,
+  getThemeSnapshot,
+  setStoredTheme,
+  subscribeToTheme,
+} from "@/lib/theme/theme-store";
 
 type ThemeContextValue = {
   theme: ThemeMode;
@@ -27,25 +32,24 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 type ThemeProviderProps = {
   children: ReactNode;
-  initialTheme: ThemeMode;
 };
 
-export function ThemeProvider({
-  children,
-  initialTheme,
-}: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<ThemeMode>(() =>
-    resolveTheme(initialTheme),
+export function ThemeProvider({ children }: ThemeProviderProps) {
+  // Server snapshot is the default theme; the pre-paint cookie script has
+  // already set `html[data-theme]`, and React re-renders with the real value
+  // immediately after hydration.
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getThemeServerSnapshot,
   );
 
   const setTheme = useCallback((nextTheme: ThemeMode) => {
-    setThemeState(resolveTheme(nextTheme));
+    setStoredTheme(nextTheme);
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((currentTheme) =>
-      currentTheme === "dark" ? "light" : "dark",
-    );
+    setStoredTheme(getThemeSnapshot() === "dark" ? "light" : "dark");
   }, []);
 
   useEffect(() => {

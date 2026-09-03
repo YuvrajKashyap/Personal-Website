@@ -20,10 +20,6 @@ import { ResumeLedger } from "@/features/home/ResumeLedger";
 import { ProjectGrid } from "@/features/home/ProjectGrid";
 import { getPublishedProjects } from "@/lib/projects/projects";
 
-type HomeSectionsProps = Readonly<{
-  variant: "dark" | "light";
-}>;
-
 type ChapterShellProps = Readonly<{
   children: ReactNode;
   className: string;
@@ -197,9 +193,14 @@ function ContactChapter() {
   );
 }
 
-export function HomeSections({ variant }: HomeSectionsProps) {
+/**
+ * Shared lower Home sections. `HomePage` supplies the `.home-sections`
+ * wrapper and its `data-home-variant`, so this renders once on the server for
+ * both themes.
+ */
+export function HomeSections() {
   return (
-    <div className="home-sections" data-home-variant={variant}>
+    <>
       <ScrollPath />
       <AboutChapter />
       <ExperienceChapter />
@@ -208,6 +209,6 @@ export function HomeSections({ variant }: HomeSectionsProps) {
       <div className="home-contact-hologram">
         <ContactSignalLazy />
       </div>
-    </div>
+    </>
   );
 }

@@ -9,6 +9,9 @@ import { getProjectsDataSourceStatus } from "@/lib/projects/project-data-source"
 import { createNoindexMetadata } from "@/lib/seo/metadata";
 import { getAdminAuthState, getAdminLoginRedirect } from "@/lib/supabase/auth";
 
+// Admin must never be prerendered; auth is resolved per request from cookies.
+export const dynamic = "force-dynamic";
+
 export const metadata = createNoindexMetadata(
   "Admin",
   "Private admin surface for site operations.",

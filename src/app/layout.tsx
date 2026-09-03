@@ -11,8 +11,9 @@ import { PostHogAnalytics } from "@/components/analytics/PostHogAnalytics";
 import { MotionSystemProvider } from "@/components/motion/MotionSystemProvider";
 import { ScrollProgressBar } from "@/components/motion/ScrollProgressBar";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { ThemeScript } from "@/components/theme/ThemeScript";
 import { seoConfig } from "@/config/seo";
-import { getServerTheme } from "@/lib/theme/server";
+import { DEFAULT_THEME } from "@/lib/theme/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -98,22 +99,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = await getServerTheme();
-
   return (
     <html
       lang="en"
-      data-theme={theme}
+      data-theme={DEFAULT_THEME}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${spaceMono.variable} ${unbounded.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
-        <ThemeProvider initialTheme={theme}>
+        <ThemeScript />
+        <ThemeProvider>
           <MotionSystemProvider>
             <ScrollProgressBar />
             {children}
